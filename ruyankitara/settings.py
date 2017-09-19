@@ -121,3 +121,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = 'static'
+
+
+if 'PROD' in os.environ:
+    try:
+        from settings_prod import *
+    except ImportError:
+        pass
