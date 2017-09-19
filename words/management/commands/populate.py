@@ -25,5 +25,3 @@ class Command(BaseCommand):
                 dialect=x[9]
             ), contents)
             Word.objects.bulk_create(words)
-
-

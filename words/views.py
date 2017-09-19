@@ -57,6 +57,7 @@ def word(request):
     :param request:
     :return:
     """
+    return HttpResponse(status=404)
     if request.method == "GET":
         form = WordForm()
         return render(request, 'words/addword.html', {'form': form})
@@ -79,26 +80,15 @@ def word_individual(request, id):
     word = get_object_or_404(Word, pk=id)
 
     if request.method == "GET":
-        return render(request, 'words/editword.html', {'word': word})
-    elif request.method == "DELETE":
-        word.delete()
-    elif request.method == "PATCH" or request.method == "PUT":
-        form = WordForm(request.POST)
-
-        if form.is_valid():
-            word.word = form.cleaned_data['word']
-            word.wordExample = form.cleaned_data['wordExample']
-            word.freeTrans = form.cleaned_data['freeTrans']
-            word.freeTransExample = form.cleaned_data['freeTransExample']
-            word.freeTrans2 = form.cleaned_data['freeTrans2']
-            word.freeTrans2Example = form.cleaned_data['freeTrans2Example']
-            word.save()
+        return render(request, 'words/word_detail.html', {'word': word})
 
     return redirect('/my-words')
 
 
 @login_required
 def word_delete(request, id):
+    return HttpResponse(status=404)
+
     if request.method != "POST":
         return 409
 
@@ -150,8 +140,10 @@ def my_words(request):
     if search_query:
         words_all = words_all.filter(
             Q(word__contains=search_query) |
-            Q(freeTrans__contains=search_query) |
-            Q(freeTrans2__contains=search_query)
+            Q(POS__contains=search_query) |
+            Q(gloss__contains=search_query) |
+            Q(tone__contains=search_query) |
+            Q(dialect__contains=search_query)
         )
 
     paginator = Paginator(words_all, 25)
@@ -175,5 +167,6 @@ def my_words(request):
         'num_pages': paginator.num_pages,
         'page': int(page),
         'is_filtered': search_query is not None,
-        'range': paginator_template_range
+        'range': paginator_template_range,
+        'search_query': search_query
     })

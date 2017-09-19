@@ -2,3 +2,14 @@ textarea{
     resize: vertical;
 }
 
+.individual{
+
+}
+
+.individual .row{
+    padding: 0.3em 1em;
+}
+
+.individual .row > div:first-child{
+    color: #00dba3;
+}

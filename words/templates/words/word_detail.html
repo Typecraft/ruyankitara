@@ -1,0 +1,58 @@
+{% extends "words/base.html" %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static "words/words.js" %}"></script>
+    <link rel="stylesheet" href="{% static "words/words.css" %}">
+{% endblock %}
+
+{% block body %}
+    <div class="back">
+        <a href="/my-words"><i class="fa fa-arrow-left"></i> <span>My words</span></a>
+    </div>
+    <div class="individual container">
+        <div class="page-header">
+            <h1>Word {{ word.word }}</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Word</div>
+            <div class="col-md-10">{{ word.word }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Prefix</div>
+            <div class="col-md-10">{{ word.prefix }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Stem</div>
+            <div class="col-md-10">{{ word.stem }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Tone</div>
+            <div class="col-md-10">{{ word.tone }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">POS</div>
+            <div class="col-md-10">{{ word.POS }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Gloss</div>
+            <div class="col-md-10">{{ word.gloss }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Class</div>
+            <div class="col-md-10">{{ word.word_class }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">No.</div>
+            <div class="col-md-10">{{ word.no }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Note</div>
+            <div class="col-md-10">{{ word.note }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Dialect</div>
+            <div class="col-md-10">{{ word.dialect }}</div>
+        </div>
+    </div>
+{% endblock %}
