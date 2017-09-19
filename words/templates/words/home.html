@@ -1,0 +1,32 @@
+{% extends "words/base.html" %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static "words/home.js" %}"></script>
+    <link rel="stylesheet" href="{% static "words/home.css" %}">
+{% endblock %}
+
+{% block body %}
+    <div class="home__wrapper">
+        <div class="home container-fluid">
+            <div class="row">
+                <div class="title">
+                    <h2>Welcome back {{ user.username }}!</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/word"><button class="btn btn-block btn-success">Add word</button></a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/my-words"><button class="btn btn-block btn-success">Browse words</button></a>
+                </div>
+            </div>
+            <div class="row logoutrow">
+                <div class="col-md-4 col-md-offset-4">
+                    <a href="/logout"><button class="btn btn-block btn-danger">Logout</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

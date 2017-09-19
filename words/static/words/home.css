@@ -1,0 +1,19 @@
+.home__wrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 10em;
+}
+.home{
+    width: 600px;
+}
+.title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.logoutrow{
+    margin-top: 1em;
+}

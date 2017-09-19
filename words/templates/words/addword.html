@@ -1,0 +1,98 @@
+{% extends "words/base.html" %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static "words/words.js" %}"></script>
+    <link rel="stylesheet" href="{% static "words/words.css" %}">
+{% endblock %}
+
+{% block body %}
+    <div class="back">
+        <a href="/"><i class="fa fa-arrow-left"></i> <span>Home</span></a>
+    </div>
+    <div class="forward">
+        <a href="/my-words"><span>My words</span>&nbsp;<i class="fa fa-arrow-right"></i></a>
+    </div>
+    <div class="words container">
+        <div class="page-header">
+            <h1>Add word with translations</h1>
+        </div>
+        <div class="row">
+            <div class="words__recent">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="words__new">
+                <form action="/word" method="POST" class="form-horizontal">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="wordInput">CoTu</label>
+                        <div class="col-sm-3">
+                            <input
+                                autofocus
+                                placeholder="Word"
+                                type="text"
+                                class="form-control"
+                                id="wordInput"
+                                name="word">
+                        </div>
+                        <div class="col-sm-7">
+                            <input
+                                placeholder="Example"
+                                type="text"
+                                class="form-control"
+                                id="wordExample"
+                                name="wordExample">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="freeTrans">Vietnamese</label>
+                        <div class="col-sm-3">
+                            <input
+                                autofocus
+                                placeholder="Word"
+                                type="text"
+                                class="form-control"
+                                id="freeTrans"
+                                name="freeTrans">
+                        </div>
+                        <div class="col-sm-7">
+                            <input
+                                placeholder="Example"
+                                type="text"
+                                class="form-control"
+                                id="freeTransExample"
+                                name="freeTransExample">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="wordInput">English</label>
+                        <div class="col-sm-3">
+                            <input
+                                autofocus
+                                placeholder="Word"
+                                type="text"
+                                class="form-control"
+                                id="freeTrans2"
+                                name="freeTrans2">
+                        </div>
+                        <div class="col-sm-7">
+                            <input
+                                placeholder="Example"
+                                type="text"
+                                class="form-control"
+                                id="freeTrans2Example"
+                                name="freeTrans2Example">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

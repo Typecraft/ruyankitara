@@ -1,0 +1,69 @@
+.wordlist{
+    flex: 1;
+    width: 100%;
+}
+
+.header{
+
+}
+
+.mywords__wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2em 10em;
+    align-items: center;
+}
+
+.word{
+    display: block;
+    text-decoration: none;
+    position: relative;
+    background: #333333;
+    color: white;
+    padding: 1em 3em;
+    border-radius: 5px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: 0.5em;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.word__title{
+    font-size: 17px;
+}
+
+.word__innertitle{
+    font-size: 14px;
+}
+
+.word__content{
+    font-size: 14px;
+}
+
+.word:hover{
+    text-decoration: none;
+    color: white;
+
+    border-bottom: 2px solid #00dba3;
+}
+
+.word__column--right{
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    bottom: 0em;
+}
+
+.word__column--right button,.word__column--right > form{
+    height: 100%;
+}
+
+.search{
+    position: relative;
+}
+.search a{
+    position: absolute;
+    right: -90px;
+    top: 10px;
+}
