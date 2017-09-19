@@ -12,7 +12,7 @@ migrations:
 
 .PHONY: run
 run:
-	python manage.py runserver
+	python manage.py runserver 0.0.0.0:8012
 
 .PHONY: shell
 shell:
