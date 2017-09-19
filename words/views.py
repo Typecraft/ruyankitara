@@ -75,7 +75,6 @@ def word(request):
     #    return HttpResponse(status=409)
 
 
-@login_required
 def word_individual(request, id):
     word = get_object_or_404(Word, pk=id)
 
@@ -85,7 +84,6 @@ def word_individual(request, id):
     return redirect(reverse(words))
 
 
-@login_required
 def word_delete(request, id):
     return HttpResponse(status=404)
 
@@ -103,7 +101,6 @@ def word_delete(request, id):
     return redirect(reverse(words))
 
 
-@login_required()
 def word_update(request, id):
     return HttpResponse(status=409)
     if request.method != "POST":
@@ -127,7 +124,6 @@ def word_update(request, id):
     return redirect('/my-words')
 
 
-@login_required
 def words(request):
     """
     Renders an overview over my words, with pagination

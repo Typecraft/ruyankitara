@@ -12,7 +12,7 @@ migrations:
 
 .PHONY: run
 run:
-	python manage.py runserver 0.0.0.0:8012
+	python manage.py runserver
 
 .PHONY: shell
 shell:
@@ -21,3 +21,7 @@ shell:
 .PHONY: superuser
 superuser:
 	python manage.py createsuperuser
+
+.PHONY: freeze
+freeze:
+	rm -f requirements.txt && pip freeze > requirements.txt
