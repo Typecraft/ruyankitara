@@ -19,9 +19,7 @@ def index(request):
     :param request:
     :return:
     """
-    if request.user.is_authenticated:
-        return redirect('/home')
-    return redirect('/login')
+    return redirect('/home')
 
 
 def login_user(request):
@@ -44,12 +42,11 @@ def logout_user(request):
     return redirect('/login')
 
 
-@login_required
 def home(request):
+    return redirect(reverse(words))
     return render(request, 'words/home.html')
 
 
-@login_required
 def word(request):
     """
     If the method is GET, we render the add-word view.
@@ -61,18 +58,21 @@ def word(request):
     if request.method == "GET":
         form = WordForm()
         return render(request, 'words/addword.html', {'form': form})
-    elif request.method == "POST":
-        form = WordForm(request.POST)
-
-        if form.is_valid():
-            model = Word(
-                **form.cleaned_data
-            )
-            model.save()
-            messages.add_message(request, messages.SUCCESS, "Added word")
-        return render(request, 'words/addword.html', {'form': form})
     else:
         return HttpResponse(status=409)
+
+    #if request.method == "POST":
+    #    form = WordForm(request.POST)
+
+    #    if form.is_valid():
+    #        model = Word(
+    #            **form.cleaned_data
+    #        )
+    #        model.save()
+    #        messages.add_message(request, messages.SUCCESS, "Added word")
+    #    return render(request, 'words/addword.html', {'form': form})
+    #else:
+    #    return HttpResponse(status=409)
 
 
 @login_required
@@ -82,7 +82,7 @@ def word_individual(request, id):
     if request.method == "GET":
         return render(request, 'words/word_detail.html', {'word': word})
 
-    return redirect('/my-words')
+    return redirect(reverse(words))
 
 
 @login_required
@@ -100,11 +100,12 @@ def word_delete(request, id):
 
     word.delete()
     messages.add_message(request, messages.SUCCESS, "Message deleted")
-    return redirect('/my-words')
+    return redirect(reverse(words))
 
 
 @login_required()
 def word_update(request, id):
+    return HttpResponse(status=409)
     if request.method != "POST":
         return 409
 
@@ -127,7 +128,7 @@ def word_update(request, id):
 
 
 @login_required
-def my_words(request):
+def words(request):
     """
     Renders an overview over my words, with pagination
     :param request:
