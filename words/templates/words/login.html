@@ -8,7 +8,10 @@
     <div class="login__wrapper">
         <div class="login">
             <h3><i class="fa fa-lock">&nbsp;</i>Login</h3>
-            <form action="/login" method="POST">
+            {% if detail  %}
+                {{ detail }}
+            {% endif %}
+            <form action="/login/" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username</label>

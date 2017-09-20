@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'words'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'words',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -113,6 +116,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Custom user and auth
+AUTH_USER_MODEL = 'users.User'
 
 
 # Static files (CSS, JavaScript, Images)

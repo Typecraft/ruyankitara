@@ -22,26 +22,6 @@ def index(request):
     return redirect('/home')
 
 
-def login_user(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-        return redirect('/home')
-    else:
-        return render(request, 'words/login.html')
-
-
-def logout_user(request):
-    if request.user.is_authenticated:
-        logout(request)
-
-    return redirect('/login')
-
-
 def home(request):
     return redirect(reverse(words))
     return render(request, 'words/home.html')
@@ -82,6 +62,20 @@ def word_individual(request, id):
         return render(request, 'words/word_detail.html', {'word': word})
 
     return redirect(reverse(words))
+
+
+def word_edit(request, id):
+    word = get_object_or_404(Word, pk=id)
+    form = WordForm(request.POST or None, instance=word)
+
+    if request.method == "GET":
+        return render(request, 'words/editword.html', {'word': word, 'form': form})
+    else:
+        if form.is_valid():
+            form.save()
+            return redirect('/word/%s/' % str(id))
+        else:
+            return render(request, 'words/editword.html', {'word': word, 'form': form})
 
 
 def word_delete(request, id):

@@ -6,6 +6,15 @@
 
 {% block body %}
     <div class="mywords__wrapper">
+        {% if not user.is_authenticated %}
+            <div class="forward">
+                <a href="/login/"><i class="fa fa-lock"></i>&nbsp;Login</a>
+            </div>
+        {% else %}
+            <div class="forward">
+                <a href="/logout/"><i class="fa fa-lock"></i>&nbsp;Logout</a>
+            </div>
+        {% endif %}
         <div class="header">
             <ul class="pagination">
                 {% if page == 1 %}

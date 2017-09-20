@@ -55,7 +55,7 @@
     bottom: 0em;
 }
 
-.word__column--right button,.word__column--right > form{
+.word__column--right button,.word__column--right > a{
     height: 100%;
 }
 

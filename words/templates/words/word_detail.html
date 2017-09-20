@@ -10,6 +10,11 @@
     <div class="back">
         <a href="/words"><i class="fa fa-arrow-left"></i> <span>Words</span></a>
     </div>
+    {% if perms.words.change_word %}
+        <div class="forward">
+            <a href="/word/{{ word.id }}/edit/"><i class="fa fa-pencil"></i> <span>Edit</span></a>
+        </div>
+    {% endif %}
     <div class="individual container">
         <div class="page-header">
             <h1>Word {{ word.word }}</h1>

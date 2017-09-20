@@ -13,3 +13,18 @@ textarea{
 .individual .row > div:first-child{
     color: #00dba3;
 }
+
+.word__editwrapper{
+
+}
+
+.word__editwrapper label{
+    color: #00dba3;
+}
+
+.word__editwrapper .errorlist{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #e74c3c;
+}

@@ -8,7 +8,7 @@
 
 {% block body %}
     <div class="back">
-        <a href="/my-words"><i class="fa fa-arrow-left"></i> <span>My words</span></a>
+        <a href="/word/{{ word.id }}/"><i class="fa fa-arrow-left"></i> <span>Back to word</span></a>
     </div>
     <div class="words container">
         <div class="page-header">
@@ -20,79 +20,61 @@
             </div>
         </div>
         <div class="row">
-            <div class="words__new">
-                <form action="/word/{{ word.id }}/update" method="POST" class="form-horizontal">
+            <div class="word__editwrapper">
+                <form action="/word/{{ word.id }}/edit/" method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="wordInput">CoTu</label>
-                        <div class="col-sm-3">
-                            <input
-                                    autofocus
-                                    placeholder="Word"
-                                    type="text"
-                                    class="form-control"
-                                    id="wordInput"
-                                    value="{{ word.word }}"
-                                    name="word">
-                        </div>
-                        <div class="col-sm-7">
-                            <input
-                                    placeholder="Example"
-                                    type="text"
-                                    class="form-control"
-                                    id="wordExample"
-                                    value="{{ word.wordExample }}"
-                                    name="wordExample">
-                        </div>
+                        <label for="word">Word</label>
+                        {{ form.word.errors }}
+                        <input type="text" class="form-control" name="word" value="{{ word.word }}">
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="wordInput">Vietnamese</label>
-                        <div class="col-sm-3">
-                            <input
-                                    autofocus
-                                    placeholder="Word"
-                                    type="text"
-                                    class="form-control"
-                                    id="wordInput"
-                                    value="{{ word.freeTrans }}"
-                                    name="freeTrans">
-                        </div>
-                        <div class="col-sm-7">
-                            <input
-                                    placeholder="Example"
-                                    type="text"
-                                    class="form-control"
-                                    id="wordExample"
-                                    value="{{ word.freeTransExample }}"
-                                    name="freeTransExample">
-                        </div>
+                        <label for="prefix">Prefix</label>
+                        {{ form.prefix.errors }}
+                        <input type="text" class="form-control" name="prefix" value="{{ word.prefix }}">
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="wordInput">English</label>
-                        <div class="col-sm-3">
-                            <input
-                                    autofocus
-                                    placeholder="Word"
-                                    type="text"
-                                    class="form-control"
-                                    id="wordInput"
-                                    value="{{ word.freeTrans2 }}"
-                                    name="freeTrans2">
-                        </div>
-                        <div class="col-sm-7">
-                            <input
-                                    placeholder="Example"
-                                    type="text"
-                                    class="form-control"
-                                    id="wordExample"
-                                    value="{{ word.freeTrans2Example }}"
-                                    name="freeTrans2Example">
-                        </div>
+                        <label for="stem">Stem</label>
+                        {{ form.stem.errors }}
+                        <input type="text" class="form-control" name="stem" value="{{ word.stem }}">
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-2">
-                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                        </div>
+                        <label for="tone">Tone</label>
+                        {{ form.tone.errors }}
+                        <input type="text" class="form-control" name="tone" value="{{ word.tone }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="POS">POS</label>
+                        {{ form.POS.errors }}
+                        <input type="text" class="form-control" name="POS" value="{{ word.POS }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="gloss">English gloss</label>
+                        {{ form.gloss.errors }}
+                        <input type="text" class="form-control" name="gloss" value="{{ word.gloss }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="word_class">Class</label>
+                        {{ form.word_class.errors }}
+                        <input type="text" class="form-control" name="word_class" value="{{ word.word_class }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="no">No.</label>
+                        {{ form.no.errors }}
+                        <input type="text" class="form-control" name="no" value="{{ word.no }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        {{ form.note.errors }}
+                        <textarea class="form-control" id="note" name="note" value="{{ word.note }}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="dialect">Dialect</label>
+                        {{ form.dialect.errors }}
+                        <input type="text" class="form-control" name="dialect" value="{{ word.dialect }}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
                     </div>
                 </form>
             </div>
