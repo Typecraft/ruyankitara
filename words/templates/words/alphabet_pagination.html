@@ -1,0 +1,13 @@
+ <ul class="pagination mb-0">
+   {% for alphabet_char in 'abcdefghijklmonpqrstuvwxyz' %}
+     {% if char == alphabet_char %}
+        <li class="active"><a href="#">{{ alphabet_char }}</a></li>
+     {% else %}
+       <li>
+         <a href="/words?char={{ alphabet_char }}{% if page %}&page={{ page }}"{% endif %}>
+           {{ alphabet_char }}
+         </a>
+       </li>
+     {% endif %}
+   {% endfor %}
+ </ul>

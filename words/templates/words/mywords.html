@@ -16,25 +16,28 @@
             </div>
         {% endif %}
         <div class="header">
-            <ul class="pagination">
-                {% if page == 1 %}
-                    <li class="disabled"><a href="">&laquo;</a></li>
-                {% else %}
-                    <li><a href="/words?page={{ page|add:-1 }}">&laquo;</a></li>
-                {% endif %}
-                {% for i in range %}
-                    {% if i == page %}
-                        <li class="active"><a href="#">{{ i }}</a></li>
-                    {% else %}
-                        <li><a href="/words?page={{ i }}{% if search_query %}&q={{ search_query }}{% endif %}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                {% if page == num_pages %}
-                    <li class="disabled"><a href="">&raquo;</a></li>
-                {% else %}
-                    <li><a href="/words?page={{ page|add:1 }}">&raquo;</a></li>
-                {% endif %}
-            </ul>
+          {% include 'words/alphabet_pagination.html' %}
+        </div>
+        <div class="header">
+          <ul class="pagination">
+            {% if page == 1 %}
+              <li class="disabled"><a href="">&laquo;</a></li>
+            {% else %}
+              <li><a href="/words?page={{ page|add:-1 }}{% if char %}&char={{ char }}{% endif %}">&laquo;</a></li>
+            {% endif %}
+            {% for i in range %}
+              {% if i == page %}
+                <li class="active"><a href="#">{{ i }}</a></li>
+              {% else %}
+                <li><a href="/words?page={{ i }}{% if search_query %}&q={{ search_query }}{% endif %}{% if char %}&char={{ char }}{% endif %}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if page == num_pages %}
+              <li class="disabled"><a href="">&raquo;</a></li>
+            {% else %}
+              <li><a href="/words?page={{ page|add:1 }}{% if char %}&char={{ char }}{% endif %}">&raquo;</a></li>
+            {% endif %}
+          </ul>
         </div>
         <div class="search">
             <form action="words" method="GET" class="form-horizontal" accept-charset="UTF-8">

@@ -125,6 +125,7 @@ def words(request):
     :return:
     """
     search_query = request.GET.get('q')
+    character = request.GET.get('char', 'a')
     words_all = Word.objects\
         .order_by('word')
 
@@ -136,6 +137,8 @@ def words(request):
             Q(tone__contains=search_query) |
             Q(dialect__contains=search_query)
         )
+    else:
+        words_all = words_all.filter(word__istartswith=character)
 
     paginator = Paginator(words_all, 25)
     page = request.GET.get('page')
@@ -159,5 +162,6 @@ def words(request):
         'page': int(page),
         'is_filtered': search_query is not None,
         'range': paginator_template_range,
-        'search_query': search_query
+        'search_query': search_query,
+        'char': character
     })
