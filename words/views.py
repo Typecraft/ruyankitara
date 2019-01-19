@@ -96,9 +96,8 @@ def word_delete(request, id):
 
 
 def word_update(request, id):
-    return HttpResponse(status=409)
     if request.method != "POST":
-        return 409
+        return HttpResponse(status=409)
 
     word = get_object_or_404(Word, pk=id)
 
@@ -106,6 +105,7 @@ def word_update(request, id):
 
     if form.is_valid():
         word.word = form.cleaned_data['word']
+        word.augment = form.cleaned_data['augment']
         word.wordExample = form.cleaned_data['wordExample']
         word.freeTrans = form.cleaned_data['freeTrans']
         word.freeTransExample = form.cleaned_data['freeTransExample']

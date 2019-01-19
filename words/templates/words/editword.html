@@ -34,6 +34,11 @@
                         <input type="text" class="form-control" name="prefix" value="{{ word.prefix }}">
                     </div>
                     <div class="form-group">
+                        <label for="augment">Augment</label>
+                        {{ form.augment.errors }}
+                        <input type="text" class="form-control" name="augment" value="{{ word.augment }}">
+                    </div>
+                    <div class="form-group">
                         <label for="stem">Stem</label>
                         {{ form.stem.errors }}
                         <input type="text" class="form-control" name="stem" value="{{ word.stem }}">

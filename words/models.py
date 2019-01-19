@@ -7,6 +7,7 @@ from django.db import models
 class Word(models.Model):
     word = models.CharField(blank=True, default="", max_length=511)
     prefix = models.CharField(blank=True, default="", max_length=255)
+    augment = models.CharField(blank=True, default="", max_length=255)
     stem = models.CharField(default="", max_length=255)
     tone = models.CharField(blank=True, default="", max_length=255)
     POS = models.CharField(blank=True, default="", max_length=31)
@@ -17,4 +18,4 @@ class Word(models.Model):
     dialect = models.CharField(blank=True, default="", max_length=127)
 
     def __unicode__(self):
-        return u"%s" % (self.word)
+        return u"%s" % (self.word,)
